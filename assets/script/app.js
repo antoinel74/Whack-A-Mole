@@ -1,6 +1,7 @@
 const holes = document.querySelectorAll(".hole");
 const displayScore = document.getElementById("score");
 const moles = document.querySelectorAll(".mole");
+const displayCntdwn = document.getElementById("countdown");
 
 let timeUp = false;
 let score = 0;
@@ -39,23 +40,23 @@ function pop() {
   }, 1000);
 }
 
+// Start the game
 function startGame() {
+  let cntdwn = 20;
   timeUp = false;
   displayScore.textContent = 0;
   score = 0;
   pop();
   intervalId = setInterval(pop, 1000);
 
-  const displayCntdwn = document.getElementById("countdown");
-  let cntdwn = 20;
-
+  // Set a timer
   const updateCntdwn = setInterval(() => {
     cntdwn -= 1;
     displayCntdwn.textContent = cntdwn;
     if (cntdwn <= 0) {
       cntdwn = 0;
       clearInterval(updateCntdwn);
-      timeUp = false;
+      timeUp = true;
       alert("Game Over ! You reach the score of " + score);
     }
   }, 1000);
@@ -63,33 +64,26 @@ function startGame() {
   setTimeout(() => {
     timeUp = true;
     clearInterval(intervalId);
-    alert("Game Over ! You reach the score of " + score);
   }, 20000); // the duration of the game
 }
 
+let sound = new Audio("assets/sound/hammer.mp3");
+
 // Upgrade score and kill mole with the hammer
 function hammer(e) {
+  if (!gameStarted) {
+    return;
+  }
   this.parentNode.classList.remove("up");
   score++;
+  sound.play();
   displayScore.textContent = score;
 }
 
 // Actions
 document.querySelector(".start").addEventListener("click", function () {
-  if (!gameStarted) {
-    startGame();
-    gameStarted = true;
-  }
-});
-
-document.querySelector(".stop").addEventListener("click", function () {
-  clearInterval(intervalId);
-  score = 0;
-  gameStarted = false;
-  timeUp = true;
-  displayScore.textContent = 0;
-  moles.forEach((mole) => mole.classList.remove("up"));
-  alert("Here we go again !");
+  startGame();
+  gameStarted = true;
 });
 
 moles.forEach((mole) => mole.addEventListener("click", hammer));

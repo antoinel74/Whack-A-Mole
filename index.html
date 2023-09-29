@@ -11,11 +11,11 @@
       <h1 class="title">Whack-a-mole !</h1>
       <div class="header_info">
         <h2 class="score">Score : <span id="score"></span></h2>
-        <button class="btn start">Start</button>
-        <button class="btn stop">Reset</button>
-        <p class="score">
-          Time remaining :<span id="countdown"></span> seconds
-        </p>
+        <button class="btn start" id="start">Start</button>
+        <button class="btn stop" onClick="window.location.reload();">
+          Reset
+        </button>
+        <p class="score">Time remaining :<span id="countdown"></span> sec.</p>
       </div>
     </section>
     <section class="alert_mobile">
