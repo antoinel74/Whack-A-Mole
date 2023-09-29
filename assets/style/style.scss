@@ -1,0 +1,138 @@
+@import "./reset";
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  width: 100vw;
+  background: url(../img/bg.jpg) no-repeat;
+  height: 100vh;
+  background-size: cover;
+  font-family: "Luckiest Guy", cursive;
+  .header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    padding-top: 36px;
+    .title {
+      font-size: 6vw;
+      -webkit-text-stroke: 1px #382204;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .header_info {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      .btn {
+        padding: 12px 36px;
+        border-radius: 8px;
+        border: none;
+        font-size: 18px;
+        font-family: "Luckiest Guy", cursive;
+        background: rgb(152, 216, 152);
+        border: none;
+        color: white;
+        -webkit-text-stroke: 1px #382204;
+        transition: all 0.2s ease;
+        border: 1px solid #382204;
+        &:hover {
+          transform: scale(105%);
+        }
+      }
+      .score {
+        background-color: #f7f7e2;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #382204;
+        color: #382204;
+        #score {
+          color: red;
+        }
+        #countdown {
+          color: red;
+        }
+      }
+      .stop {
+        background: rgb(255, 145, 145);
+      }
+    }
+  }
+  .game {
+    display: flex;
+    width: 60%;
+    height: 70vh;
+    flex-wrap: wrap;
+    margin: 12px auto;
+    .hole {
+      flex: 1 0 25%;
+      overflow: hidden;
+      position: relative;
+      &:after {
+        display: block;
+        background-color: #382204;
+        border-radius: 50%;
+        background: url(/assets/img/dirt.svg);
+        background-size: cover;
+        content: "";
+        width: 100%;
+        height: 70px;
+        position: absolute;
+        z-index: 2;
+        bottom: -20px;
+      }
+    }
+    .mole {
+      background: url(../img/mole.svg) bottom center no-repeat;
+      background-size: 15vh;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+    .hole.up .mole {
+      top: 0;
+    }
+  }
+  .alert_mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  body {
+    position: relative;
+    .game {
+      display: none;
+    }
+    .alert_mobile {
+      background: url("../img/background.jpg");
+      background-position: contain;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      -webkit-text-stroke: 2px #382204;
+      padding: 0 24px;
+      font-size: 6vw;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

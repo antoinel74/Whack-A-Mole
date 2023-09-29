@@ -1,13 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Whack-a-Mole</title>
+    <link rel="stylesheet" href="./assets/style/style.scss" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <section class="header">
+      <h1 class="title">Whack-a-mole !</h1>
+      <div class="header_info">
+        <h2 class="score">Score : <span id="score"></span></h2>
+        <button class="btn start">Start</button>
+        <button class="btn stop">Reset</button>
+        <p class="score">
+          Time remaining :<span id="countdown"></span> seconds
+        </p>
+      </div>
+    </section>
+    <section class="alert_mobile">
+      <h2>Sorry &#128546; the game is not available in mobile version !</h2>
+    </section>
+    <section class="game">
+      <div class="hole hole1">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole2">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole3">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole4">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole5">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole6">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole7">
+        <div class="mole"></div>
+      </div>
+      <div class="hole hole8">
+        <div class="mole"></div>
+      </div>
+    </section>
+    <script type="module" src="assets/script/app.js"></script>
   </body>
 </html>
